@@ -46,9 +46,13 @@ class db_functions{
                     header('location: home/landing.php');
                 }else{
                     // blocked by admin
-                    // redirect back to the login page with a message
-                   
-                    // header('location: home/landing.php');
+                    // redirect back to the login page with an admin message 
+                    $_SESSION['alert'] = [
+                                        'danger', 
+                                        'Sorry your account has been locked for now<br><i><b>Kindly contact the 
+                                        <a href="#" class="alert-link">ADMIN</a> for assistance</b></i>'
+                                    ];
+                    header('location: ../index.php');
                 }           
           
         }else{

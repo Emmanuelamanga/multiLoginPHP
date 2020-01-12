@@ -2,9 +2,21 @@
 <?php
 // start session
     session_start();
-    // authenticate the visitor
-    print_r($_SESSION['logon_user']);
-    // assign roles
+    // authenticate the page visitor
+    if(!isset($_SESSION['logon_user'])){
+        // redirect back to login with a message
+        $_SESSION['alert'] = [
+            'info', 
+            'Kindly log in to access our services'
+        ];
+header('location: ../../index.php');
+    }else{
+       // assign roles 
+        print_r($_SESSION['logon_user']);
+    }
+    
+
+    
 
 
 ?>
