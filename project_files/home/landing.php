@@ -9,15 +9,14 @@
             'info', 
             'Kindly log in to access our services'
         ];
-header('location: ../../index.php');
+    header('location: ../../index.php');
     }else{
-       // assign roles 
+        //user
         print_r($_SESSION['logon_user']);
+        echo '<br>';
+       // assign roles 
+         print_r($_SESSION['user_rights']);
     }
-    
-
-    
-
 
 ?>
 <!DOCTYPE html>
@@ -27,11 +26,28 @@ header('location: ../../index.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- links to stylesheets  -->
     <?php 
         include '../common/links.php'; 
-    ?>
+     ?>
 </head>
 <body>
-    here
+    <div class="container-fluid">
+        <div style="margin: auto; width:40%;padding-top:10px;">
+            <?php 
+                include '../common/nav.php'; 
+            ?>
+        </div>
+         
+     <div class="container">
+         <!-- here -->
+     </div>
+    </div>
+   
+   
+    <!-- link to scripts -->
+    <?php 
+        include '../common/scripts.php'; 
+     ?>
 </body>
 </html>

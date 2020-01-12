@@ -42,8 +42,27 @@ class db_functions{
                                                 'user_name'=>$row['usr_name'], 
                                                 'role_id'=> $row['roles_role_id'] 
                                             ];
-                    // redirect user to the landing page
-                    header('location: home/landing.php');
+                    // fetch rights 
+                    $id =$row['usr_id'];
+                            $sql2 = "SELECT * FROM rights_view WHERE user_id='$id'";
+                            $right_result = $con->query( $sql2);
+                            if($row_r = $right_result->fetch_assoc()){
+                                // set user right session
+                             print_r( $_SESSION['user_rights'] = $row_r);
+                              // redirect user to the landing page
+                                header('location: home/landing.php');
+                            }else{
+                                // back to home page 
+                                // ask user to contact admin for rights aproval 
+                                $_SESSION['alert'] = [
+                                        'info', 
+                                        'Sorry you have no rights to access these page<br><i><b>Kindly contact the 
+                                        <a href="#" class="alert-link">ADMIN</a> for assistance</b></i>'
+                                    ];
+                             header('location: ../index.php'); 
+                            }
+
+                   
                 }else{
                     // blocked by admin
                     // redirect back to the login page with an admin message 

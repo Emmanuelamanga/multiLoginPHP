@@ -14,7 +14,7 @@ $alert = new alerts();
     <!-- links  -->
     <link rel="stylesheet" href="project_files/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="project_files/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project_files/bootstrap-3.3.7-dist/css/style.css">
 </head>
 <body>
 <div class="container" id="container">
