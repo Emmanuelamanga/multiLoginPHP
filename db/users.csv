@@ -1,0 +1,8 @@
+Field,Type,Null,Key,Default,Extra
+usr_id,int(11),NO,PRI,NULL,auto_increment
+usr_name,varchar(45),NO,,NULL,
+usr_email,varchar(45),NO,UNI,NULL,
+usr_pass,varchar(45),NO,,NULL,
+created_at,timestamp,NO,,current_timestamp(),
+updated_at,timestamp,YES,,current_timestamp(),"on update current_timestamp()"
+usr_status,tinyint(4),NO,,1,

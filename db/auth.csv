@@ -1,0 +1,6 @@
+Field,Type,Null,Key,Default,Extra
+auth_id,int(11),NO,PRI,NULL,auto_increment
+auth_name,varchar(45),NO,,NULL,
+role_id,int(11),NO,,NULL,
+created_at,timestamp,NO,,current_timestamp(),
+updated_at,timestamp,YES,,current_timestamp(),"on update current_timestamp()"

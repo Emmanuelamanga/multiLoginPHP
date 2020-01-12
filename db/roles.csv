@@ -1,0 +1,5 @@
+Field,Type,Null,Key,Default,Extra
+role_id,"int(10) unsigned",NO,PRI,NULL,auto_increment
+role_name,varchar(45),NO,,NULL,
+created_date,timestamp,NO,,current_timestamp(),
+updated_date,timestamp,YES,,current_timestamp(),"on update current_timestamp()"
