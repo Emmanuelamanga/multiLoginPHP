@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class db_functions{
     // variable declaration and initialization
     public $db_conn;
@@ -24,25 +24,43 @@ class db_functions{
    }
         
     public function login_user($con, $user_name, $user_pass){
-        echo ($user_name.' '. $user_pass).'<BR>';
+        // echo ($user_name.' '. $user_pass).'<BR>';
 
-        $sql = "SELECT usr_id FROM users_view WHERE usr_name='$user_name' AND usr_pass='$user_pass'";
+        $sql = "SELECT usr_id, usr_status, roles_role_id, usr_name FROM users_view WHERE usr_name='$user_name' AND usr_pass='$user_pass'";
         $result = $con->query($sql);
 
+        // confirm the user 
         if ($row = $result->fetch_assoc()) { 
             // update the logs
+                // check if the user is authenticated
+                if($row['usr_status'] == 1 && $row['roles_role_id'] == 1){
+                    // authenticated got to landing page
+                      // set auth session to the role id and user session to user id
 
-             $row['usr_id'];
-            // set auth session to the role id and user session to user id
-            $_SESSION['login_user'] = 
-            // redirect user to the landing page
-            header('location: home/landing.php');
+                    $_SESSION['logon_user'] = [
+                                                'user_id'=>$row['usr_id'],
+                                                'user_name'=>$row['usr_name'], 
+                                                'role_id'=> $row['roles_role_id'] 
+                                            ];
+                    // redirect user to the landing page
+                    header('location: home/landing.php');
+                }else{
+                    // blocked by admin
+                    // redirect back to the login page with a message
+                   
+                    // header('location: home/landing.php');
+                }           
+          
         }else{
-           
-               echo 'username or password is incorrect';
+
+           $_SESSION['alert'] = ['warning', 'username or password is incorrect'];
+
+            header('location: ../index.php');
+            
                
               
         }
         
     }
 }
+?>

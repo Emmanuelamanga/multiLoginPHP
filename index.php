@@ -1,3 +1,9 @@
+<?php
+session_start();
+include 'project_files/common/alerts.php';
+$alert = new alerts();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +19,11 @@
 <div class="container" id="container">
     
         <div class="panel">
+           
            <div class="panel-heading">Welcome to multi-user authentication system</div>
+            <?php if (isset($_SESSION['alert'])) {
+                    print_r($alert->message($_SESSION['alert'][0],$_SESSION['alert'][1]));
+            } ;?>
             <div class="panel-body">
                 <!-- <h5 class="card-title ">Kindly log in to access our services.</h5> -->
                 
@@ -44,6 +54,7 @@
     </div>
   </div>
 </div>
+
 <!-- script  -->
 <script src="project_files/bootstrap-3.3.7-dist/js/jquery-1.12.4.min.js"></script>
 <script src="project_files/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>

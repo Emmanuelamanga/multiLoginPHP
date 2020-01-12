@@ -3,8 +3,9 @@
 // start session
     session_start();
     // authenticate the visitor
-
+    print_r($_SESSION['logon_user']);
     // assign roles
+
 
 ?>
 <!DOCTYPE html>
